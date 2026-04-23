@@ -23,10 +23,8 @@
     <meta name="description" content={data.comments[0].comment} />
     <meta property="og:description" content={data.comments[0].comment} />
   {/if}
-  {#if data.socialPreviewImage}
-    <meta property="og:image" content={clientResolver(resolve, data.socialPreviewImage)} />
-    <meta name="twitter:image" content={clientResolver(resolve, data.socialPreviewImage)} />
-  {/if}
+  <meta property="og:image" content={data.socialPreviewImage?.startsWith('http') ? data.socialPreviewImage : data.socialPreviewImage ? clientResolver(resolve, data.socialPreviewImage) : 'https://cdn.krack.ing/kracking-assets/og-image.png'} />
+  <meta name="twitter:image" content={data.socialPreviewImage?.startsWith('http') ? data.socialPreviewImage : data.socialPreviewImage ? clientResolver(resolve, data.socialPreviewImage) : 'https://cdn.krack.ing/kracking-assets/og-image.png'} />
 </svelte:head>
 
 <div class="public-page">

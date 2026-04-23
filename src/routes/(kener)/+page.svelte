@@ -135,8 +135,8 @@
   {/if}
   <meta property="og:type" content="website" />
   <meta name="twitter:card" content="summary_large_image" />
-  <meta property="og:image" content={data.socialPagePreviewImage ? `${data.siteUrl ? data.siteUrl.replace(/\/$/, '') : ''}${clientResolver(resolve, data.socialPagePreviewImage)}` : 'https://cdn.krack.ing/kracking-assets/og-image.png'} />
-  <meta name="twitter:image" content={data.socialPagePreviewImage ? `${data.siteUrl ? data.siteUrl.replace(/\/$/, '') : ''}${clientResolver(resolve, data.socialPagePreviewImage)}` : 'https://cdn.krack.ing/kracking-assets/og-image.png'} />
+  <meta property="og:image" content={data.socialPagePreviewImage?.startsWith('http') ? data.socialPagePreviewImage : data.socialPagePreviewImage ? `${data.siteUrl ? data.siteUrl.replace(/\/$/, '') : ''}${clientResolver(resolve, data.socialPagePreviewImage)}` : 'https://cdn.krack.ing/kracking-assets/og-image.png'} />
+  <meta name="twitter:image" content={data.socialPagePreviewImage?.startsWith('http') ? data.socialPagePreviewImage : data.socialPagePreviewImage ? `${data.siteUrl ? data.siteUrl.replace(/\/$/, '') : ''}${clientResolver(resolve, data.socialPagePreviewImage)}` : 'https://cdn.krack.ing/kracking-assets/og-image.png'} />
 </svelte:head>
 
 <!-- page title -->
