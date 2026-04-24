@@ -17,15 +17,24 @@
 <svelte:head>
   <title>{data.incident.title + " | " + data.siteName}</title>
   <meta property="og:title" content={data.incident.title + " | " + data.siteName} />
+  <meta name="twitter:title" content={data.incident.title + " | " + data.siteName} />
   <meta property="og:type" content="article" />
+  <meta property="og:site_name" content={data.siteName || "Kracking Status"} />
   <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:site" content="@kracking" />
   {#if data.comments.length > 0}
     <meta name="description" content={data.comments[0].comment} />
     <meta property="og:description" content={data.comments[0].comment} />
+    <meta name="twitter:description" content={data.comments[0].comment} />
   {/if}
   {@const ogImage = data.socialPreviewImage ? (data.socialPreviewImage.startsWith('http') ? data.socialPreviewImage : `${(data.siteUrl || '').replace(/\/$/, '')}${data.socialPreviewImage.startsWith('/') ? '' : '/'}${data.socialPreviewImage}`) : 'https://cdn.krack.ing/kracking-assets/og-image.png'}
   <meta property="og:image" content={ogImage} />
+  <meta property="og:image:width" content="1920" />
+  <meta property="og:image:height" content="1080" />
+  <meta property="og:image:type" content="image/png" />
+  <meta property="og:image:alt" content={data.incident.title + " — " + (data.siteName || "Kracking")} />
   <meta name="twitter:image" content={ogImage} />
+  <meta name="twitter:image:alt" content={data.incident.title + " — " + (data.siteName || "Kracking")} />
 </svelte:head>
 
 <div class="public-page">

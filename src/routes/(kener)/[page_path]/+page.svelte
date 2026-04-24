@@ -116,28 +116,41 @@
   {#if data.metaPageTitle}
     <title>{data.metaPageTitle}</title>
     <meta property="og:title" content={data.metaPageTitle} />
+    <meta name="twitter:title" content={data.metaPageTitle} />
   {:else if data.pageDetails?.page_title}
     <title>{data.pageDetails.page_title} | {data.siteName}</title>
     <meta property="og:title" content={data.pageDetails.page_title + " | " + data.siteName} />
+    <meta name="twitter:title" content={data.pageDetails.page_title + " | " + data.siteName} />
   {:else}
     <title>{data.siteName} | Status Page</title>
     <meta property="og:title" content={data.siteName + " | Status Page"} />
+    <meta name="twitter:title" content={data.siteName + " | Status Page"} />
   {/if}
   {#if data.metaPageDescription}
     <meta name="description" content={data.metaPageDescription} />
     <meta property="og:description" content={data.metaPageDescription} />
+    <meta name="twitter:description" content={data.metaPageDescription} />
   {:else if data.pageDetails?.page_header}
     <meta name="description" content={data.pageDetails.page_header} />
     <meta property="og:description" content={data.pageDetails.page_header} />
+    <meta name="twitter:description" content={data.pageDetails.page_header} />
   {:else}
-    <meta name="description" content={(data.pageDetails?.page_title || "Status Page") + " | Status Page"} />
-    <meta property="og:description" content={(data.pageDetails?.page_title || "Status Page") + " | Status Page"} />
+    <meta name="description" content={"Real-time status and uptime monitoring for " + (data.siteName || "Kracking") + " services."} />
+    <meta property="og:description" content={"Real-time status and uptime monitoring for " + (data.siteName || "Kracking") + " services."} />
+    <meta name="twitter:description" content={"Real-time status and uptime monitoring for " + (data.siteName || "Kracking") + " services."} />
   {/if}
   <meta property="og:type" content="website" />
+  <meta property="og:site_name" content={data.siteName || "Kracking Status"} />
   <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:site" content="@kracking" />
   {@const ogImage = data.socialPagePreviewImage ? (data.socialPagePreviewImage.startsWith('http') ? data.socialPagePreviewImage : `${(data.siteUrl || '').replace(/\/$/, '')}${data.socialPagePreviewImage.startsWith('/') ? '' : '/'}${data.socialPagePreviewImage}`) : 'https://cdn.krack.ing/kracking-assets/og-image.png'}
   <meta property="og:image" content={ogImage} />
+  <meta property="og:image:width" content="1920" />
+  <meta property="og:image:height" content="1080" />
+  <meta property="og:image:type" content="image/png" />
+  <meta property="og:image:alt" content={"Status page for " + (data.siteName || "Kracking")} />
   <meta name="twitter:image" content={ogImage} />
+  <meta name="twitter:image:alt" content={"Status page for " + (data.siteName || "Kracking")} />
 </svelte:head>
 
 <!-- page title -->
